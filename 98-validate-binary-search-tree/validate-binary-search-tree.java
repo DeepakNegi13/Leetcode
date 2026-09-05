@@ -14,23 +14,23 @@
  * }
  */
 class Solution {
-    public static void inOrderTra(TreeNode root, ArrayList<Integer> arr) {
-		if (root == null) return;
-		inOrderTra(root.left, arr);
-		arr.add(root.val);
-		inOrderTra(root.right, arr);
-	}
-    public boolean isValidBST(TreeNode root) {
-        if(root == null || (root.left == null && root.right == null)) return true;
-        ArrayList<Integer> arr = new ArrayList<>();
-		inOrderTra(root, arr);
-        int pre = Integer.MIN_VALUE;
-        for(int i = 0;i<arr.size();i++){
-            if(i==0 && arr.get(i) == pre){}
-            else if(arr.get(i)<=pre) return false;
-            pre = arr.get(i);
+    public boolean flag ;
+    TreeNode pre;
+    public void valid(TreeNode root){
+        if(root == null) return;
+        valid(root.left);
+        if(pre != null && pre.val>=root.val) {
+            flag = false;
+            return;
         }
-        return true;
-
+        pre = root;
+        valid(root.right);
+    }
+    public boolean isValidBST(TreeNode root) {
+        flag = true;
+        pre = null;
+        TreeNode pre = new TreeNode(Integer.MIN_VALUE);
+        valid(root);
+        return flag;
     }
 }
