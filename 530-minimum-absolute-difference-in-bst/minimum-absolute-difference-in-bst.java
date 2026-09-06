@@ -28,6 +28,5 @@ class Solution {
         if(root==null) return Integer.MAX_VALUE;
         int diff = Math.min(Math.abs(root.val-right(root.left)),Math.abs(root.val-left(root.right)));
         return Math.min(diff,Math.min(getMinimumDifference(root.right),getMinimumDifference(root.left)));
-        
     }
 }
