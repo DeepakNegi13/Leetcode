@@ -24,10 +24,10 @@
  * }
  */
 class Solution {
-    public TreeNode helper(ArrayList<Integer> nums, int st,int end){
+    public TreeNode helper(int[] nums, int st,int end){
         if(st>end) return null;
         int mid = (st + end)/2;
-        TreeNode root = new TreeNode(nums.get(mid));
+        TreeNode root = new TreeNode(nums[mid]);
         root.left = helper(nums,st,mid-1);
         root.right = helper(nums,mid+1,end);
         return root;
@@ -50,13 +50,20 @@ class Solution {
         // }
         // temp = head;
         // return helper(temp,size);
-        ArrayList<Integer> arr = new ArrayList<>();
         ListNode temp = head;
+        int i = 0;
         while(temp!=null){
-            arr.add(temp.val);
+            i++;
             temp = temp.next;
         }
-        return helper(arr,0,arr.size()-1);
+        temp = head;
+        int[] arr = new  int[i];
+
+        for(int j = 0;j<i;j++){
+            arr[j] = temp.val;
+            temp = temp.next;
+        }
+        return helper(arr,0,arr.length-1);
 
 
 
