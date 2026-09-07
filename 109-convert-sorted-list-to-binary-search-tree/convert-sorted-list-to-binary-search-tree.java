@@ -32,7 +32,24 @@ class Solution {
         root.right = helper(nums,mid+1,end);
         return root;
     }
+    // public TreeNode helper(ListNode temp,int n){
+    //     for(int i = 1;i<n/2;i++){
+        
+    //     }
+    //     TreeNode root = new TreeNode();
+    //     root.left = helper(nums,st,mid-1);
+    //     root.right = helper(nums,mid+1,end);
+    //     return root;
+    // }
     public TreeNode sortedListToBST(ListNode head) {
+        // int size = 0;
+        // ListNode temp = head;
+        // while(temp!=null){
+        //     temp = temp.next;
+        //     size++;
+        // }
+        // temp = head;
+        // return helper(temp,size);
         ArrayList<Integer> arr = new ArrayList<>();
         ListNode temp = head;
         while(temp!=null){
@@ -40,6 +57,8 @@ class Solution {
             temp = temp.next;
         }
         return helper(arr,0,arr.size()-1);
+
+
 
     }
 }
