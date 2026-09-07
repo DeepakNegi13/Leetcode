@@ -14,19 +14,18 @@
  * }
  */
 class Solution {
-    int right(TreeNode root){
-        if(root==null) return Integer.MAX_VALUE;
-        if(root.right==null) return root.val;
-        return right(root.right);
-    }
-    int left(TreeNode root){
-        if(root==null) return Integer.MAX_VALUE;
-        if(root.left==null) return root.val;
-        return left(root.left);
+    void helper(TreeNode root,TreeNode[] temp,int[] min){
+        if(root==null) return;
+        helper(root.left,temp,min);
+        if(temp[0]!=null) min[0] = Math.min(min[0],root.val-temp[0].val);
+        temp[0] = root;
+        helper(root.right,temp,min);
     }
     public int minDiffInBST(TreeNode root) {
-        if(root==null) return Integer.MAX_VALUE;
-        int diff = Math.min(Math.abs(root.val-right(root.left)),Math.abs(root.val-left(root.right)));
-        return Math.min(diff,Math.min(minDiffInBST(root.right),minDiffInBST(root.left)));
+        int[] min = {Integer.MAX_VALUE};
+        TreeNode[] temp = {null};
+        helper(root,temp,min);
+        return min[0];
+        
     }
 }
