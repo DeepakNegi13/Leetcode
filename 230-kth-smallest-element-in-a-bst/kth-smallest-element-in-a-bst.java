@@ -15,6 +15,7 @@
  */
 class Solution {
     void inorder(TreeNode root, int[] arr,int[] i,int k){
+        if(i[0]>k) return;
         if(root==null) return;
         inorder(root.left,arr,i,k);
         if(i[0]==k) arr[0] = root.val;
