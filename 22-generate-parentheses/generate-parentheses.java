@@ -9,7 +9,7 @@ class Solution {
 
 	private void helperString(int n, int open,int close, List<String> ans, String str) {
 		if( open>n || close>n || open<close ) return ;
-		if(open==n&&open==close){
+		if(open==close&&open==n){
 			ans.add(new String(str));
 			return;
 		}
