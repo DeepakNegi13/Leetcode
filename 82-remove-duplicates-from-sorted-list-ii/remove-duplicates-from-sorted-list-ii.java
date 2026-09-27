@@ -20,7 +20,6 @@ class Solution {
             if(t2.next!=null && t2.val == t2.next.val){
                 int val = t2.val;
                 while(t2!=null && t2.val==val) t2 = t2.next;
-                if(t2==null) t1.next = null;
             }
             else {
                 t1.next = t2;
@@ -28,6 +27,8 @@ class Solution {
                 t2 = t2.next;
             }
         }
+                if(t2==null) t1.next = null;
+
         return main.next;
 	}
 
