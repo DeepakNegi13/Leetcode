@@ -7,7 +7,7 @@ class KthLargest {
 
 	public KthLargest(int k, int[] arr) {
 		this.k = k;
-		for (int elem : arr) this.arr.add(elem);
+		// for (int elem : arr) this.arr.add(elem);
         for (int elem : arr) {
 			pq.add(elem);
 			if (pq.size() > k) pq.remove();
@@ -19,7 +19,7 @@ class KthLargest {
 	}
 
 	public int add(int val) {
-		this.arr.add(val);
+		// this.arr.add(val);
 		pq.add(val);
 		if (pq.size() > k) {
 			pq.remove();
