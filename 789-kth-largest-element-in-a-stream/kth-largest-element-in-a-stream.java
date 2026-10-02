@@ -1,7 +1,7 @@
 class KthLargest {
 
     int k;
-	ArrayList<Integer> arr = new ArrayList<>();
+	// ArrayList<Integer> arr = new ArrayList<>();
 	int kthLargest = Integer.MIN_VALUE;
 	PriorityQueue<Integer> pq = new PriorityQueue<>();
 
