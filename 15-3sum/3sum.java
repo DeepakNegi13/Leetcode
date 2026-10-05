@@ -1,24 +1,41 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-		List<List<Integer>> ans = new ArrayList<>();
-		HashSet<List<Integer>> set = new HashSet<>();
-		
-		for(int i = 0;i<nums.length;i++){
-			HashSet<Integer> hs = new HashSet<>();
-			for(int j = i+1;j<nums.length;j++){
-				if(!hs.isEmpty() && hs.contains(-1*(nums[i]+nums[j]))){
-					List<Integer> arr = new ArrayList<>();
+        Arrays.sort(nums);
+        int i = 0;
+        List<List<Integer>> ans = new ArrayList<>();
+        while (i < nums.length) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                i++;
+                continue;
+            }
+            int k = nums.length - 1;
+            int j = i + 1;
+            while (j < k) {
+                List<Integer> arr = new ArrayList<>();
 
-					arr.add(nums[i]);arr.add(nums[j]);arr.add(-nums[i]-nums[j]);
-					Collections.sort(arr);
-					set.add(arr);
-				}else{
-                    hs.add(nums[j]);
-                }
+                if (nums[i] + nums[j] + nums[k] == 0) {
+                    arr.add(nums[i]);
+                    arr.add(nums[j]);
+                    arr.add(nums[k]);
+                    ans.add(arr);
+                    while (j < nums.length - 1) {
+                        if (nums[j] != nums[j + 1])
+                            break;
+                        j++;
+                    }
+                    while (k > j) {
+                        k--;
 
-			}
-		}
-		for(List<Integer> elem : set) ans.add(elem);
+                        if (nums[k] != nums[k + 1])
+                            break;
+                    }
+                } else if (nums[i] + nums[j] + nums[k] > 0)
+                    k--;
+                else
+                    j++;
+            }
+            i++;
+        }
         return ans;
-	}
+    }
 }
