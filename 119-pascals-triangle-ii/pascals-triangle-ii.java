@@ -1,18 +1,14 @@
 class Solution {
-    public List<Integer> getRow(int rowIndex) {
-               List<List<Integer>> sc = new  ArrayList<>();
-        int sum = 0;
-        for(int i = 0;i<=rowIndex;i++){
-            sc.add(new ArrayList());
-            for(int j = 0;j<=i;j++){
-                if(j==0||j==i){
-                    sc.get(i).add(1);
-                }else if(i!=0&&j!=0){
-                    sum = sc.get(i-1).get(j-1)+sc.get(i-1).get(j);
-                    sc.get(i).add(sum);
-                }
-            }
+    public List<Integer> getRow(int row) {
+        List<Integer> li = new ArrayList<>();
+        double nums = 1;
+        for(int i = 0;i<row;i++){
+            li.add((int)nums);
+            nums = nums*(row-i);
+            nums = nums/(i+1);
+
         }
-        return sc.get(rowIndex);
+        li.add(1);
+        return li;
     }
 }
