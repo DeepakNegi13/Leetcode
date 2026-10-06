@@ -70,9 +70,8 @@ class Solution {
             
             temp = temp.next;
         }
-
         //make the linkedlist in default or starting form
-        reverseList(last);
+        // reverseList(last);
 
         return max;
     }
